@@ -1,0 +1,24 @@
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <div class="form-group">
+    <label>FULL NAME</label>
+    <input name="FullName" #FullName="ngModel" [(ngModel)]="service.formData.FullName" class="form-control" required>
+    <div class="validation-error" *ngIf="FullName.invalid && FullName.touched">Enter you fullname.</div>
+  </div>
+  <div class="form-group">
+    <label>POSITION</label>
+    <input name="Position" #Position="ngModel" [(ngModel)]="service.formData.Position" class="form-control">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>EMP Code</label>
+      <input name="EmpCode" #EmpCode="ngModel" [(ngModel)]="service.formData.EmpCode" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+      <label>MOBILE</label>
+      <input name="Mobile" #Mobile="ngModel" [(ngModel)]="service.formData.Mobile" class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block registerButton">SUBMIT</button>
+  </div>
+</form>
