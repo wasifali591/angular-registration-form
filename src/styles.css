@@ -1,31 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-.form-group>input{
-    font-weight:bolder;
-}
 
-.form-group>label{
-    font-weight: lighter;
-}
-.registerButton {
-    background-color: #67DFD4;
-    color: #FFFFFF;
-}
-.jumbotron{
-    background-color: #FFFFFF;
-    padding-top: 32px;
-}
 
-table tr:hover{
-    cursor: pointer;
-}
+
+
 
 input.ng-dirty.ng-invalid.ng-touched{
     border-color: #DC3545;
 }
 
-div.validation-error{
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #DC3545;
-}

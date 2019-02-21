@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
+// Application internal imports
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { Employee } from 'src/app/shared/employee.model';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee-list',
@@ -16,9 +18,20 @@ export class EmployeeListComponent implements OnInit {
     this.service.refreshList();
   }
 
+  /**
+   * function-name: populateForm
+   * @param emp
+   * description: pupolate row value on to the form
+   */
   populateForm(emp: Employee) {
     this.service.formData = Object.assign({}, emp);
   }
+
+  /**
+   * function-name: onDelete
+   * @param id
+   * description: delete data to the corosponding id and refresh the table
+   */
   onDelete(id: number) {
     if (confirm('Are you sure to delte this record?')) {
       this.service.deleteEmployee(id).subscribe(res => {

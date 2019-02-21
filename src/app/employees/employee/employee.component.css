@@ -1,0 +1,18 @@
+.form-group>input{
+  font-weight:bolder;
+}
+
+.form-group>label{
+  font-weight: lighter;
+}
+.registerButton {
+  background-color: #67DFD4;
+  color: #FFFFFF;
+}
+
+div.validation-error{
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #DC3545;
+}
