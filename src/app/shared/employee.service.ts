@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Employee } from './employee.model';
 import { HttpClient } from '@angular/common/http';
+
+// Application internal imports
+import { Employee } from './employee.model';
+import { AppSettings } from '../constraints/api-endpoint';
 
 @Injectable({
   providedIn: 'root'
@@ -9,27 +12,42 @@ export class EmployeeService {
   formData: Employee;
   list: Employee[];
 
-  // rootURL is the variable to hold the similar part of the url
-  readonly rootURL = 'http://localhost/angular-slim-api/public/api/';
+
   constructor(private http: HttpClient) { }
 
-  // read data from fromData and insert into the database
+  /**
+   * function-name: postEmployee
+   * @param formData
+   * description: using httpClient(http) and API_ENDPOINT post data form the form to the database
+   */
   postEmployee(formData: Employee) {
-    return this.http.post(this.rootURL + 'post-employee', formData);
+    return this.http.post(AppSettings.API_ENDPOINT + 'post-employee', formData);
   }
-  // fetch all data from the database and atore into an array Employee
+
+  /**
+   * function-name: refreshList
+   * description: using httpClient(http) and API_ENDPOINT get data form the database to the form
+   */
   refreshList() {
-    this.http.get(this.rootURL + 'get-employee')
-      .toPromise().then(res => this.list = res as Employee[]).catch((er) => { console.log('error occured', er); });
+    this.http.get(AppSettings.API_ENDPOINT + 'get-employee')
+      .toPromise().then(res => this.list = res as Employee[]);
   }
 
-  // edit data depending on Employee ID
+  /**
+   * function-name: putEmployee
+   * @param formData
+   * description: using httpClient(http) and API_ENDPOINT update data into database with the form value according to the EmployeeID
+   */
   putEmployee(formData: Employee) {
-    return this.http.put(this.rootURL + 'put-employee/' + formData.EmployeeID, formData);
+    return this.http.put(AppSettings.API_ENDPOINT + 'put-employee/' + formData.EmployeeID, formData);
   }
 
-  // edit data depending on Employee ID
+  /**
+   * function-name: deleteEmployee
+   * @param id
+   * description: using httpClient(http) and API_ENDPOINT delete data from database according to the id
+   */
   deleteEmployee(id: number) {
-    return this.http.delete(this.rootURL + 'delete-employee/' + id);
+    return this.http.delete(AppSettings.API_ENDPOINT + 'delete-employee/' + id);
   }
 }
